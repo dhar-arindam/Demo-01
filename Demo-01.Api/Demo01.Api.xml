@@ -1,0 +1,284 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Demo01.Api</name>
+    </assembly>
+    <members>
+        <member name="T:Demo_01.Api.Controllers.PatientsController">
+            <summary>
+            PatientsController class
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.ControllerBase" />
+        </member>
+        <member name="F:Demo_01.Api.Controllers.PatientsController.Logger">
+            <summary>
+            The logger
+            </summary>
+        </member>
+        <member name="F:Demo_01.Api.Controllers.PatientsController.DbContext">
+            <summary>
+            The database context
+            </summary>
+        </member>
+        <member name="M:Demo_01.Api.Controllers.PatientsController.#ctor(Microsoft.Extensions.Logging.ILogger{Demo_01.Api.Controllers.PatientsController},Demo01.Api.UtilDbContext.PatientDbContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Demo_01.Api.Controllers.PatientsController"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="dbContext">The database context.</param>
+        </member>
+        <member name="M:Demo_01.Api.Controllers.PatientsController.GetDetailsAsync(System.Int32,System.Int32)">
+            <summary>
+            Gets the details asynchronous.
+            </summary>
+            <param name="pageSize">Size of the page.</param>
+            <param name="pageNumber">The page number.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Demo_01.Api.Controllers.PatientsController.PostRecordAsync(Demo01.Model.PatientModel)">
+            <summary>
+            Posts the record asynchronous.
+            </summary>
+            <param name="request">The request.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Demo_01.Api.Program">
+            <summary>
+            Program class
+            </summary>
+        </member>
+        <member name="M:Demo_01.Api.Program.Main(System.String[])">
+            <summary>
+            Defines the entry point of the application.
+            </summary>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="M:Demo_01.Api.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            Creates the web host builder.
+            </summary>
+            <param name="args">The arguments.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Demo_01.Api.Startup">
+            <summary>
+            Start up class
+            </summary>
+        </member>
+        <member name="M:Demo_01.Api.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Demo_01.Api.Startup" /> class.
+            </summary>
+            <param name="configuration">The configuration.</param>
+        </member>
+        <member name="P:Demo_01.Api.Startup.Configuration">
+            <summary>
+            Gets the configuration.
+            </summary>
+            <value>
+            The configuration.
+            </value>
+        </member>
+        <member name="M:Demo_01.Api.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configures the services.
+            </summary>
+            <param name="services">The services.</param>
+        </member>
+        <member name="M:Demo_01.Api.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            Configures the specified application.
+            </summary>
+            <param name="app">The application.</param>
+            <param name="env">The env.</param>
+        </member>
+        <member name="T:Demo01.Api.EntityConfig.PatientEntityConfig">
+             <summary>
+            
+             </summary>
+             <seealso cref="!:Microsoft.EntityFrameworkCore.IEntityTypeConfiguration&lt;Model.Patient&gt;" />
+        </member>
+        <member name="M:Demo01.Api.EntityConfig.PatientEntityConfig.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Demo01.Api.Model.Patient})">
+            <summary>
+            Configures the entity of type <typeparamref name="TEntity" />.
+            </summary>
+            <param name="builder">The builder to be used to configure the entity type.</param>
+        </member>
+        <member name="T:Demo01.Api.Helper.XmlInputFormatter">
+            <summary>
+            Custom XML Input formatter
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.Formatters.XmlSerializerInputFormatter" />
+        </member>
+        <member name="M:Demo01.Api.Helper.XmlInputFormatter.#ctor(Microsoft.AspNetCore.Mvc.MvcOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Demo01.Api.Helper.XmlInputFormatter"/> class.
+            </summary>
+        </member>
+        <member name="M:Demo01.Api.Helper.XmlInputFormatter.CreateSerializer(System.Type)">
+            <summary>
+            Called during deserialization to get the <see cref="T:System.Xml.Serialization.XmlSerializer" />.
+            </summary>
+            <param name="type"></param>
+            <returns>
+            The <see cref="T:System.Xml.Serialization.XmlSerializer" /> used during deserialization.
+            </returns>
+        </member>
+        <member name="T:Demo01.Api.Helper.PatientDbContextExtension">
+            <summary>
+            Patient DbContext Extension class
+            </summary>
+        </member>
+        <member name="M:Demo01.Api.Helper.PatientDbContextExtension.GetPatientDetails(Demo01.Api.UtilDbContext.PatientDbContext,System.Int32,System.Int32)">
+            <summary>
+            Gets the stock items.
+            </summary>
+            <param name="dbContext">The database context.</param>
+            <param name="pageSize">Size of the page.</param>
+            <param name="pageNumber">The page number.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Demo01.Api.Helper.PatientDbContextExtension.GetPatientDetailByNameAsync(Demo01.Api.UtilDbContext.PatientDbContext,Demo01.Api.Model.Patient)">
+            <summary>
+            Gets the patient detail by name asynchronous.
+            </summary>
+            <param name="dbContext">The database context.</param>
+            <param name="entity">The entity.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Demo01.Api.Helper.IQueryableExtensions">
+            <summary>
+            \extension class for IQueryable class
+            </summary>
+        </member>
+        <member name="M:Demo01.Api.Helper.IQueryableExtensions.Paging``1(System.Linq.IQueryable{``0},System.Int32,System.Int32)">
+            <summary>
+            Pagings the specified page size.
+            </summary>
+            <typeparam name="TModel">The type of the model.</typeparam>
+            <param name="query">The query.</param>
+            <param name="pageSize">Size of the page.</param>
+            <param name="pageNumber">The page number.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Demo01.Api.Helper.ResponseExtensions">
+            <summary>
+            ResponseExtensions class
+            </summary>
+        </member>
+        <member name="M:Demo01.Api.Helper.ResponseExtensions.ToHttpResponse(Demo01.Model.IResponse)">
+            <summary>
+            Converts to httpresponse.
+            </summary>
+            <param name="response">The response.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Demo01.Api.Helper.ResponseExtensions.ToHttpResponse``1(Demo01.Model.ISingleResponse{``0})">
+            <summary>
+            Converts to httpresponse.
+            </summary>
+            <typeparam name="TModel">The type of the model.</typeparam>
+            <param name="response">The response.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Demo01.Api.Helper.ResponseExtensions.ToHttpResponse``1(Demo01.Model.IListResponse{``0})">
+            <summary>
+            Converts to httpresponse.
+            </summary>
+            <typeparam name="TModel">The type of the model.</typeparam>
+            <param name="response">The response.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Demo01.Api.Model.Patient">
+            <summary>
+            Patient model class
+            </summary>
+            <seealso cref="!:Demo01.Api.Model.BaseModel" />
+        </member>
+        <member name="M:Demo01.Api.Model.Patient.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Demo01.Api.Model.Patient"/> class.</summary>
+        </member>
+        <member name="P:Demo01.Api.Model.Patient.PatientId">
+            <summary>
+            Gets or sets the patient identifier.
+            </summary>
+            <value>
+            The patient identifier.
+            </value>
+        </member>
+        <member name="P:Demo01.Api.Model.Patient.Forename">
+            <summary>
+            Gets or sets the forename.
+            </summary>
+            <value>
+            The forename.
+            </value>
+        </member>
+        <member name="P:Demo01.Api.Model.Patient.Surname">
+            <summary>
+            Gets or sets the surname.
+            </summary>
+            <value>
+            The surname.
+            </value>
+        </member>
+        <member name="P:Demo01.Api.Model.Patient.DateOfBirth">
+            <summary>
+            Gets or sets the date of birth.
+            </summary>
+            <value>
+            The date of birth.
+            </value>
+        </member>
+        <member name="P:Demo01.Api.Model.Patient.Gender">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Demo01.Api.Model.Patient"/> is gender.
+            </summary>
+            <value>
+              <c>true</c> if gender; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Demo01.Api.Model.Patient.TelephoneNumber">
+            <summary>
+            Gets or sets the telephone number.
+            </summary>
+            <value>
+            The telephone number.
+            </value>
+        </member>
+        <member name="T:Demo01.Api.UtilDbContext.PatientDbContext">
+            <summary>
+            Patient Db context class
+            </summary>
+            <seealso cref="T:Microsoft.EntityFrameworkCore.DbContext" />
+        </member>
+        <member name="M:Demo01.Api.UtilDbContext.PatientDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Demo01.Api.UtilDbContext.PatientDbContext})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Demo01.Api.UtilDbContext.PatientDbContext"/> class.
+            </summary>
+            <param name="options">The options.</param>
+        </member>
+        <member name="M:Demo01.Api.UtilDbContext.PatientDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Override this method to further configure the model that was discovered by convention from the entity types
+            exposed in <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1" /> properties on your derived context. The resulting model may be cached
+            and re-used for subsequent instances of your derived context.
+            </summary>
+            <param name="modelBuilder">The builder being used to construct the model for this context. Databases (and other extensions) typically
+            define extension methods on this object that allow you to configure aspects of the model that are specific
+            to a given database.</param>
+            <remarks>
+            If a model is explicitly set on the options for this context (via <see cref="M:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.UseModel(Microsoft.EntityFrameworkCore.Metadata.IModel)" />)
+            then this method will not be run.
+            </remarks>
+        </member>
+        <member name="P:Demo01.Api.UtilDbContext.PatientDbContext.PatientDetails">
+            <summary>
+            Gets or sets the patient details.
+            </summary>
+            <value>
+            The patient details.
+            </value>
+        </member>
+    </members>
+</doc>

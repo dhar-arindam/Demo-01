@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@using Demo01.Model
+
+@model PagedResponse<PatientModel>
+
+<div class="row">
+    <div class="col-sm-12" id="displayContainer">
+        <div class="col-sm-12" style="margin:10px 0">
+            <button class="btn btn-default pull-right" data-toggle="tooltip" title="Click to add new record" id="btnAddNew">
+                <i class="glyphicon glyphicon-plus" style="margin-right:0.25em"></i>Add New
+            </button>
+        </div>
+        <hr style="clear:both" />
+        <div class="col-sm-12">
+            <table class="tablesorter" style="width:100%">
+                <thead>
+                    <tr>
+                        <th> Forename </th>
+                        <th> Surname </th>
+                        <th> Gender </th>
+                        <th> Date of Birth </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        if (Model != null)
+                        {
+                            foreach (var p in Model.Model)
+                            {
+                                <tr>
+                                    <td>@p.Forename</td>
+                                    <td>@p.Surname</td>
+                                    <td>@(p.Gender ? "Male" : "Female")</td>
+                                    <td>@p.DateOfBirth?.ToString("dd, MMM yyyy")</td>
+                                </tr>
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+            <div id="pager" style="margin-top:10px" class="pull-right">
+                <form>
+                    <button class="btn btn-default first btn-sm"><i class="glyphicon glyphicon-fast-backward"></i></button>
+                    <button class="btn btn-default prev btn-sm"><i class="glyphicon glyphicon-step-backward"></i></button>
+                    <input type="text" class="pagedisplay input-sm" />
+                    <btn class="btn btn-default next btn-sm"><i class="glyphicon glyphicon-step-forward"></i></btn>
+                    <btn class="btn btn-default last btn-sm"><i class="glyphicon glyphicon-fast-forward"></i></btn>
+                    <select class="pagesize input-sm">
+                        <option selected="selected" value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="40">40</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 hidden" id="editContainer" style="margin:10px 0">
+        <label class="header">Add new record</label>
+        <hr />
+        @*@await Html.PartialAsync("~/Views/Home/Partial/_editRecord.cshtml");*@
+        @await Html.PartialAsync("~/Views/Home/Partial/_addRecord.cshtml", new PatientModel())
+    </div>
+</div>
+
+@section Scripts{
+    <partial name="~/Views/Shared/_ValidationScriptsPartial.cshtml" />
+}
