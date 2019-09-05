@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo01.Api.Test", "Demo01.A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo01.Model", "Demo01.Model\Demo01.Model.csproj", "{1C24F45B-DA37-40D9-A1B0-63F80C93D846}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Demo01.Db", "..\..\..\Core\Demo-01\Demo-01.Db\Demo01.Db.sqlproj", "{F29E5A58-73B5-4523-8976-974BFD807F4C}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Demo01.Db", "Demo-01.Db\Demo01.Db.sqlproj", "{F29E5A58-73B5-4523-8976-974BFD807F4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
